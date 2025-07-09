@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\backend\\Repository\\Repository.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\Backend\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\backend\\Repository\\Repository.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\Backend\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\backend\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\Backend\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\backend\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\Backend\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\backend\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\BadmintonStore\\badmintonStore\\Backend\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,43 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
