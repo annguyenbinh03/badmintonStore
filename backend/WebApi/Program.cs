@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository.DbContexts;
 using Repository.Implementations;
 using Repository.Interfaces;
+using Repository.Models;
 using Service.Implementations;
 using Service.Interfaces;
 
@@ -20,9 +21,13 @@ namespace WebApi
 
             // Repository DI
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IRepository<Racket>, Repository<Racket>>();
+            builder.Services.AddScoped<IRepository<Order>, Repository<Order>>();
 
             // Service DI
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRacketService, RacketService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
 
             builder.Services.AddControllers();
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
