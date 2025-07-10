@@ -21,8 +21,9 @@ namespace WebApi
 
             // Repository DI
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IRepository<Racket>, Repository<Racket>>();
-            builder.Services.AddScoped<IRepository<Order>, Repository<Order>>();
+            builder.Services.AddScoped<IRepository<OrderDetail>, Repository<OrderDetail>>();
 
             // Service DI
             builder.Services.AddScoped<IUserService, UserService>();

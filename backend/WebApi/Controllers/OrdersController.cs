@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Repository.Models;
 using Service.Interfaces;
+using Service.Requests;
 
 namespace WebApi.Controllers
 {
@@ -31,10 +32,10 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Order order)
+        public async Task<IActionResult> Create(OrderCreationRequest request)
         {
-            await _orderService.AddAsync(order);
-            return CreatedAtAction(nameof(GetById), new { id = order.OrderId }, order);
+            var response = await _orderService.AddAsync(request);
+            return Ok(response);
         }
 
         [HttpPut("{id}")]

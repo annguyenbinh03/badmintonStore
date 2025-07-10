@@ -1,4 +1,6 @@
 ﻿using Repository.Models;
+using Service.Requests;
+using Service.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,9 @@ namespace Service.Interfaces
 {
     public interface IOrderService
     {
-        Task<IEnumerable<Order>> GetAllAsync();
-        Task<Order?> GetByIdAsync(int id);
-        Task AddAsync(Order order);
+        Task<ApiResponse<IEnumerable<OrderGetAllResponse>>> GetAllAsync();
+        Task<ApiResponse<OrderGetAllResponse>> GetByIdAsync(int id);
+        Task<ApiResponse<int>> AddAsync(OrderCreationRequest order);
         Task UpdateAsync(Order order);
         Task DeleteAsync(int id);
     }

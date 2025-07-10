@@ -18,5 +18,10 @@ namespace Repository.Implementations
         {
             return await _dbSet.FirstOrDefaultAsync(u => u.Email == email);
         }
+        public async Task<User?> GetByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _dbSet
+                .FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+        }
     }
 }

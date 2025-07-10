@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Repository.Models;
 using Service.Interfaces;
+using Service.Requests;
 
 namespace WebApi.Controllers
 {
@@ -57,6 +58,13 @@ namespace WebApi.Controllers
         {
             await _userService.DeleteAsync(id);
             return NoContent();
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequest request)
+        {
+            var response = await _userService.Login(request);
+            return Ok(response);
         }
     }
 }

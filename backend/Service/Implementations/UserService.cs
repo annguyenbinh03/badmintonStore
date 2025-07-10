@@ -1,6 +1,9 @@
-﻿using Repository.Interfaces;
+﻿
+using Repository.Interfaces;
 using Repository.Models;
 using Service.Interfaces;
+using Service.Requests;
+using Service.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +46,27 @@ namespace Service.Implementations
             {
                 _userRepository.Delete(user);
                 await _userRepository.SaveChangesAsync();
+            }
+        }
+
+        public async Task<ApiResponse<User>> Login(LoginRequest request)
+        {
+            User? user = await _userRepository.GetByEmailAndPasswordAsync(request.Email, request.Password);
+
+            if (user == null) {
+                return new ApiResponse<User>
+                {
+                    Success = false,
+                    Message = "Sai tài khoản hoặc mật khẩu"
+                };
+            }
+            else
+            {
+                return new ApiResponse<User>
+                {
+                    Success = true,
+                    Data = user
+                };
             }
         }
     }

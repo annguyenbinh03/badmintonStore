@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IOrderRepository : IRepository<Order>
     {
-        Task<User?> GetByEmailAsync(string email);
-        Task<User?> GetByEmailAndPasswordAsync(string email, string password);
+        new Task<IEnumerable<Order>> GetAllAsync();
+        Task<Order?> GetByIdWithDetailAsync(int id);
     }
 }

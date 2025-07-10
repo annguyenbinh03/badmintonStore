@@ -1,4 +1,7 @@
-﻿using Repository.Models;
+﻿
+using Repository.Models;
+using Service.Requests;
+using Service.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +18,7 @@ namespace Service.Interfaces
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(int id);
+
+        Task<ApiResponse<User>> Login(LoginRequest request);
     }
 }
