@@ -11,15 +11,15 @@ public partial class User
 
     public string Email { get; set; }
 
-    public string PasswordHash { get; set; }
+    public string Password { get; set; }
 
     public string FullName { get; set; }
+
+    public string Role { get; set; }
 
     public bool? IsGoogleLogin { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
-    public virtual ICollection<RacketReview> RacketReviews { get; set; } = new List<RacketReview>();
 }

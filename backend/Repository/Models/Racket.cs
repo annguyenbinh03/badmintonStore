@@ -25,11 +25,13 @@ public partial class Racket
 
     public bool? Active { get; set; }
 
+    public string ImageUrl { get; set; }
+
+    public int? Quantity { get; set; }
+
     public DateTime? CreatedAt { get; set; }
 
     public virtual Brand Brand { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
-
-    public virtual ICollection<RacketReview> RacketReviews { get; set; } = new List<RacketReview>();
 }

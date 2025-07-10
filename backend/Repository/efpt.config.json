@@ -5,7 +5,7 @@
    "FilterSchemas": false,
    "IncludeConnectionString": false,
    "ModelNamespace": null,
-   "OutputContextPath": null,
+   "OutputContextPath": "DbContexts",
    "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "Repository",
@@ -28,10 +28,6 @@
       },
       {
          "Name": "[dbo].[Racket]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[RacketReview]",
          "ObjectType": 0
       },
       {
