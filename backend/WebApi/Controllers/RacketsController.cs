@@ -26,30 +26,30 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var racket = await _racketService.GetByIdAsync(id);
-            return racket == null ? NotFound() : Ok(racket);
+            var response = await _racketService.GetByIdAsync(id);
+            return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Racket racket)
-        {
-            await _racketService.AddAsync(racket);
-            return CreatedAtAction(nameof(GetById), new { id = racket.RacketId }, racket);
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> Create(Racket racket)
+        //{
+        //    await _racketService.AddAsync(racket);
+        //    return CreatedAtAction(nameof(GetById), new { id = racket.RacketId }, racket);
+        //}
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Racket racket)
-        {
-            if (id != racket.RacketId) return BadRequest();
-            await _racketService.UpdateAsync(racket);
-            return NoContent();
-        }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Update(int id, Racket racket)
+        //{
+        //    if (id != racket.RacketId) return BadRequest();
+        //    await _racketService.UpdateAsync(racket);
+        //    return NoContent();
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _racketService.DeleteAsync(id);
-            return NoContent();
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    await _racketService.DeleteAsync(id);
+        //    return NoContent();
+        //}
     }
 }

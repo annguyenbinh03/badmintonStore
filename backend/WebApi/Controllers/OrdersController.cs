@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var order = await _orderService.GetByIdAsync(id);
-            return order == null ? NotFound() : Ok(order);
+            return Ok(order);
         }
 
         [HttpPost]
@@ -38,19 +38,19 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Order order)
-        {
-            if (id != order.OrderId) return BadRequest();
-            await _orderService.UpdateAsync(order);
-            return NoContent();
-        }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Update(int id, Order order)
+        //{
+        //    if (id != order.OrderId) return BadRequest();
+        //    await _orderService.UpdateAsync(order);
+        //    return NoContent();
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _orderService.DeleteAsync(id);
-            return NoContent();
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    await _orderService.DeleteAsync(id);
+        //    return NoContent();
+        //}
     }
 }
