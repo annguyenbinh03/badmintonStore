@@ -1,4 +1,5 @@
 ﻿using Repository.Models;
+using Service.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Service.Interfaces
 {
     public interface IRacketService
     {
-        Task<IEnumerable<Racket>> GetAllAsync();
-        Task<Racket?> GetByIdAsync(int id);
+        Task<ApiResponse<IEnumerable<RacketGetAllResponse>>> GetAllAsync();
+        Task<ApiResponse<RacketGetAllResponse>> GetByIdAsync(int id);
         Task AddAsync(Racket racket);
         Task UpdateAsync(Racket racket);
         Task DeleteAsync(int id);

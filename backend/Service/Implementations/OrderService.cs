@@ -70,7 +70,7 @@ namespace Service.Implementations
 
         public async Task<ApiResponse<OrderGetAllResponse>> GetByIdAsync(int id)
         {
-            var order = await _orderRepository.GetByIdWithDetailAsync(id); // Gợi ý: cần Include User + OrderDetails + Racket
+            var order = await _orderRepository.GetByIdWithDetailAsync(id);
 
             if (order == null)
             {
