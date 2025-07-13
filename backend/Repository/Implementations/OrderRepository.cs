@@ -43,5 +43,15 @@ namespace Repository.Implementations
                     .ThenInclude(od => od.Racket)
                 .FirstOrDefaultAsync(o => o.OrderId == id);
         }
+
+        public async Task<IEnumerable<Order>> GetOrderHistory(int userId)
+        {
+            return await _context.Set<Order>()
+                .Include(o => o.User)
+                .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Racket)
+                    .Where(o => o.UserId == userId)
+                .ToListAsync();
+        }
     }
 }

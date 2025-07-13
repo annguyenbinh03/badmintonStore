@@ -46,7 +46,8 @@ CREATE TABLE Orders (
     TotalAmount DECIMAL(18,2),
     ShippingAddress NVARCHAR(255),
     PaymentMethod NVARCHAR(50),
-    Status NVARCHAR(50) DEFAULT 'Đang xử lý',
+    Status NVARCHAR(50) DEFAULT N'Đang xử lý' 
+        CHECK (Status IN (N'Đang xử lý', N'Đang giao hàng', N'Đã giao hàng', N'Đã hủy')),
     CreatedAt DATETIME DEFAULT GETDATE(),
 
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
@@ -100,9 +101,10 @@ VALUES
 -- Đơn hàng
 INSERT INTO Orders (UserId, TotalAmount, ShippingAddress, PaymentMethod, Status)
 VALUES
-(1, 7180000, N'123 Đường Cầu Lông, TP.HCM', 'COD', 'Đang giao'),
-(2, 2590000, N'456 Trần Hưng Đạo, Hà Nội', 'Chuyển khoản', 'Đang xử lý'),
-(4, 7780000, N'789 Lê Văn Sỹ, Đà Nẵng', 'COD', 'Đã nhận');
+(1, 7180000, N'123 Đường Cầu Lông, TP.HCM', 'COD', N'Đang xử lý'),
+(1, 2590000, N'456 Trần Hưng Đạo, Hà Nội', 'Chuyển khoản', N'Đang giao hàng'),
+(1, 7780000, N'789 Lê Văn Sỹ, Đà Nẵng', 'COD', N'Đã giao hàng'),
+(1, 3190000, N'49 Đ. Thống Nhất, Xã Bình Thắng, Dĩ An, Bình Dương, Việt Nam', 'COD', N'Đã hủy');
 
 -- Chi tiết đơn hàng
 INSERT INTO OrderDetail (OrderId, RacketId, Quantity, UnitPrice)
@@ -110,5 +112,6 @@ VALUES
 (1, 1, 1, 3990000),
 (1, 2, 1, 2790000),
 (2, 4, 1, 2590000),
-(3, 9, 2, 3890000);
+(3, 9, 2, 3890000),
+(4, 3, 1, 3190000);
 

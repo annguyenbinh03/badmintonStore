@@ -11,5 +11,6 @@ namespace Repository.Interfaces
     {
         new Task<IEnumerable<Order>> GetAllAsync();
         Task<Order?> GetByIdWithDetailAsync(int id);
+        Task<IEnumerable<Order>> GetOrderHistory(int userId);
     }
 }

@@ -193,6 +193,54 @@ namespace Service.Implementations
             };
         }
 
+        public async Task<ApiResponse<IEnumerable<OrderGetAllResponse>>> GetByUserIdAsync(int userId)
+        {
+            var orders = await _orderRepository.GetOrderHistory(userId);
+
+            if (orders == null || !orders.Any())
+            {
+                return new ApiResponse<IEnumerable<OrderGetAllResponse>>
+                {
+                    Success = false,
+                    Message = $"Không tìm thấy đơn hàng nào cho userId = {userId}"
+                };
+            }
+
+            var result = orders.Select(order => new OrderGetAllResponse
+            {
+                OrderId = order.OrderId,
+                ShippingAddress = order.ShippingAddress,
+                PaymentMethod = order.PaymentMethod,
+                Status = order.Status,
+                TotalAmount = order.TotalAmount ?? 0m,
+                CreatedAt = order.CreatedAt ?? DateTime.MinValue,
+
+                User = new UserInfo
+                {
+                    UserId = order.User.UserId,
+                    FullName = order.User.FullName,
+                    Email = order.User.Email
+                },
+
+                Items = order.OrderDetails.Select(od => new OrderDetailInfo
+                {
+                    RacketId = od.RacketId,
+                    RacketName = od.Racket?.Name ?? "",
+                    Quantity = od.Quantity,
+                    UnitPrice = od.UnitPrice,
+                    ImageUrl = od.Racket?.ImageUrl ?? ""
+                }).ToList()
+            });
+
+            var response = new ApiResponse<IEnumerable<OrderGetAllResponse>>
+            {
+                Success = true,
+                Data = result
+            };
+
+            return response;
+        }
+
         public async Task UpdateAsync(Order order)
         {
             _orderRepository.Update(order);

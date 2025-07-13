@@ -14,6 +14,7 @@ namespace Service.Interfaces
         Task<ApiResponse<IEnumerable<OrderGetAllResponse>>> GetAllAsync();
         Task<ApiResponse<OrderGetAllResponse>> GetByIdAsync(int id);
         Task<ApiResponse<int>> AddAsync(OrderCreationRequest order);
+        Task<ApiResponse<IEnumerable<OrderGetAllResponse>>> GetByUserIdAsync(int userId);
         Task UpdateAsync(Order order);
         Task DeleteAsync(int id);
     }
