@@ -38,6 +38,13 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetUserOrderHistory(int userId)
+        {
+            var orders = await _orderService.GetByUserIdAsync(userId);
+            return Ok(orders);
+        }
+
         //[HttpPut("{id}")]
         //public async Task<IActionResult> Update(int id, Order order)
         //{
