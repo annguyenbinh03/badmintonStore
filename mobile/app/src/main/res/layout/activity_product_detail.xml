@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- AppBarLayout cho Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAccent"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="Chi tiết sản phẩm"
+            app:menu="@menu/menu_product_detail" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ScrollView chứa nội dung -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toTopOf="@id/btnAddToCart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Ảnh sản phẩm -->
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Product Image"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Tên sản phẩm -->
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Mô tả ngắn -->
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#555"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Giá tiền -->
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Tiêu đề Thông số kỹ thuật -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông số kỹ thuật"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Container cho bảng thông số -->
+            <LinearLayout
+                android:id="@+id/specsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="#F5F5F5"
+                android:layout_margin="8dp">
+
+                <!-- Dòng 1: Brand -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Brand"
+                        android:textSize="16sp"
+                        android:textColor="#757575"
+                        android:gravity="start"
+                        android:padding="4dp" />
+
+                    <TextView
+                        android:id="@+id/txtBrand"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:gravity="end"
+                        android:padding="4dp" />
+                </LinearLayout>
+
+                <!-- Dòng 2: Weight -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Weight"
+                        android:textSize="16sp"
+                        android:textColor="#757575"
+                        android:gravity="start"
+                        android:padding="4dp" />
+
+                    <TextView
+                        android:id="@+id/txtWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:gravity="end"
+                        android:padding="4dp" />
+                </LinearLayout>
+
+                <!-- Dòng 3: Balance -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Balance"
+                        android:textSize="16sp"
+                        android:textColor="#757575"
+                        android:gravity="start"
+                        android:padding="4dp" />
+
+                    <TextView
+                        android:id="@+id/txtBalance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:gravity="end"
+                        android:padding="4dp" />
+                </LinearLayout>
+
+                <!-- Dòng 4: Tension -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tension"
+                        android:textSize="16sp"
+                        android:textColor="#757575"
+                        android:gravity="start"
+                        android:padding="4dp" />
+
+                    <TextView
+                        android:id="@+id/txtTension"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:gravity="end"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Nút Thêm vào giỏ hàng -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Thêm vào giỏ hàng"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="6dp"
+        android:padding="16dp"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_cart"
+        app:iconTint="@color/white"
+        app:iconPadding="8dp"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
