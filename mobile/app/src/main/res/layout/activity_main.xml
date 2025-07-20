@@ -21,8 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_gradient"
-            app:title="Home"
+            android:background="@color/colorPrimary"
             app:titleTextColor="#FFFFFF"
             app:titleTextAppearance="@style/ToolbarTitleTextAppearance"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -58,20 +57,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-<!--    &lt;!&ndash; Floating Action Button ở giữa &ndash;&gt;-->
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:contentDescription="Thêm mới"-->
-<!--        app:srcCompat="@drawable/ic_add"-->
-<!--        app:backgroundTint="#D81B60"-->
-<!--        app:rippleColor="#FFFFFF"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/nav_view"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

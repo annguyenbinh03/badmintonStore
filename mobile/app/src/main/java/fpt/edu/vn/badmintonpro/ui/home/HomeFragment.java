@@ -12,13 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,46 +42,45 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar progressBar;
     private LinearLayout errorView;
-    private MaterialButton btnRetry;
+    private com.google.android.material.button.MaterialButton btnRetry;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Toolbar setup
-        MaterialToolbar toolbar = root.findViewById(R.id.homeToolbar);
-        toolbar.setOnMenuItemClickListener(this::onToolbarMenuItemClick);
+        Toolbar toolbar = root.findViewById(R.id.homeToolbar);
+        if (getActivity() != null) {
+            ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
 
-        // View bindings
         swipeRefreshLayout = root.findViewById(R.id.swipeRefreshLayout);
         rvProducts = root.findViewById(R.id.rvProducts);
         progressBar = root.findViewById(R.id.progressBar);
         errorView = root.findViewById(R.id.errorView);
         btnRetry = root.findViewById(R.id.btnRetry);
 
-        // RecyclerView
         rvProducts.setLayoutManager(new GridLayoutManager(getContext(), 2));
         rvProducts.addItemDecoration(new GridSpacingItemDecoration(24));
         productAdapter = new ProductAdapter(getContext(), productList, this::navigateToProductDetails);
         rvProducts.setAdapter(productAdapter);
 
-        // Swipe to refresh
         swipeRefreshLayout.setOnRefreshListener(this::fetchProducts);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
-        // Retry button
         btnRetry.setOnClickListener(v -> fetchProducts());
 
         fetchProducts();
         return root;
     }
 
-    private boolean onToolbarMenuItemClick(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_cart) {
             startActivity(new Intent(getContext(), CartActivity.class));
             return true;
         }
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     private void fetchProducts() {
@@ -138,8 +136,8 @@ public class HomeFragment extends Fragment {
         @Override
         public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
                                    @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % 2; // item column
+            int position = parent.getChildAdapterPosition(view);
+            int column = position % 2;
 
             outRect.left = spacing - column * spacing / 2;
             outRect.right = (column + 1) * spacing / 2;

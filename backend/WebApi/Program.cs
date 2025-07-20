@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using Repository.DbContexts;
 using Repository.Implementations;
@@ -14,6 +13,8 @@ namespace WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.WebHost.UseUrls("http://0.0.0.0:7276");
 
             // Add DbContext
             builder.Services.AddDbContext<VotProShopContext>(options =>
@@ -33,13 +34,14 @@ namespace WebApi
 
             builder.Services.AddControllers();
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            // Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Middleware
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -47,10 +49,7 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

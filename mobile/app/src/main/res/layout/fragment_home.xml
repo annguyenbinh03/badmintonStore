@@ -5,20 +5,21 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- Toolbar hiển thị tiêu đề + icon giỏ hàng -->
-    <com.google.android.material.appbar.MaterialToolbar
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/homeToolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@drawable/toolbar_gradient"
-        android:title="Trang chủ"
-        android:titleTextColor="@android:color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Trang chủ"
         app:menu="@menu/menu_home"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Layout kéo làm mới + danh sách sản phẩm -->
+    <!-- SwipeRefresh + RecyclerView -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
@@ -33,24 +34,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2" />
-
+            android:clipToPadding="false" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <!-- Loading Indicator -->
+    <!-- Loading -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeToolbar"
+        app:layout_constraintBottom_toBottomOf="@id/swipeRefreshLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- View khi lỗi kết nối -->
+    <!-- Error View -->
     <LinearLayout
         android:id="@+id/errorView"
         android:layout_width="wrap_content"
@@ -59,8 +57,8 @@
         android:gravity="center"
         android:padding="16dp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeToolbar"
+        app:layout_constraintBottom_toBottomOf="@id/swipeRefreshLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -70,8 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Không thể tải dữ liệu"
             android:textSize="16sp"
-            android:textColor="#757575"
-            android:fontFamily="sans-serif-medium" />
+            android:textColor="#757575" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRetry"
@@ -79,12 +76,9 @@
             android:layout_height="wrap_content"
             android:text="Thử lại"
             android:textAllCaps="false"
-            android:textSize="14sp"
             android:textColor="#FFFFFF"
             app:backgroundTint="#D81B60"
             app:cornerRadius="8dp"
             android:layout_marginTop="12dp" />
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

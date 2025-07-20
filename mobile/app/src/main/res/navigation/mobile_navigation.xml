@@ -22,4 +22,12 @@
         android:name="fpt.edu.vn.badmintonpro.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_ai"
+        android:name="fpt.edu.vn.badmintonpro.ui.ai.AIFragment"
+        android:label="AI Assistant"
+        tools:layout="@layout/fragment_ai" />
+
+
 </navigation>

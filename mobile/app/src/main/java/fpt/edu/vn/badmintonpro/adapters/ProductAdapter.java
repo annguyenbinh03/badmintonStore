@@ -40,12 +40,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView txtName, txtPrice;
+        TextView txtQuantity;
         MaterialButton btnDetails;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.imgProduct);
             txtName = itemView.findViewById(R.id.txtName);
+            txtQuantity = itemView.findViewById(R.id.txtQuantity);
             txtPrice = itemView.findViewById(R.id.txtPrice);
             btnDetails = itemView.findViewById(R.id.btnDetails);
         }
@@ -63,7 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product p = productList.get(position);
         holder.txtName.setText(p.getName());
         holder.txtPrice.setText(String.format("Giá: %.2f VNĐ", (double) p.getPrice()));
-
+        holder.txtQuantity.setText("Còn lại: " + p.getQuantity());
 
         Picasso.get()
                 .load(p.getImageUrl())
@@ -87,6 +89,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     }).start();
         });
     }
+
 
     @Override
     public int getItemCount() {
