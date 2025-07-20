@@ -13,6 +13,7 @@ CREATE TABLE Users (
     FullName NVARCHAR(100),
 	[Role] NVARCHAR(20),
     IsGoogleLogin BIT DEFAULT 0,
+	AvartaUrl NVARCHAR(1000),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
 
@@ -67,12 +68,12 @@ CREATE TABLE OrderDetail (
 
 
 -- Người dùng
-INSERT INTO Users (Email, [Password], FullName, [Role], IsGoogleLogin)
+INSERT INTO Users (Email, [Password], FullName, [Role], IsGoogleLogin, AvartaUrl)
 VALUES 
-('user@gmail.com', 'user', N'Nguyễn Văn A', 'User', 0),
-('manager@gmail.com', 'manager', N'Trần Thị B', 'Manager', 0),
-('manager2@shop.com', 'manager', N'Quản Lý Shop', 'Manager', 0),
-('user2@example.com', 'user', N'Lê Thị C', 'User', 0);
+('user@gmail.com', 'user', N'Nguyễn Văn A', 'User', 0, N'https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/484064434_2044050099437772_1590169009068997958_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEtANiUIpKON91Cjq9BwbzznWPjn2AuIuidY-OfYC4i6DJyaMJzBmGxf64K9vighpbL5VfUBI2yZODxk6o5cXtA&_nc_ohc=jh077VpH6S0Q7kNvwEEKEXF&_nc_oc=Adk3m98LViICnZZrbBEn0KW9wNVhFOagwUHuUHPqdrtU9nxEw6BUyfdUCn2NxlKT9SB_qU2gBtwYcGGtAsjhNmlG&_nc_zt=23&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=CUR2G7FKh4JqUCSY2DLzIw&oh=00_AfSN_JP9qdzk2SjiVtd6hZd4QYS0CKhzcvw2rmqhXbG0yA&oe=6882EFC6'),
+('manager@gmail.com', 'manager', N'Trần Thị B', 'Manager', 0, N'https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/409192513_3497579977126705_5541025393756589771_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHFcgbd_MRqKHEGXrMuJECyB5Yed6Xs7ioHlh53pezuKv59wy1gK_1FByweUBe7pxhaeWSwF-QuDVau8Lx_nE1T&_nc_ohc=Mf39jvAeTtYQ7kNvwGCTaXL&_nc_oc=Adlpj8f9X_ebjPyPUaYVamWTVxZmdMmWHY2sO1Lfw-eyKpd1_dpKIR-AiAY8vmG-qQjW4hesY2FAd4yqi4xmfT90&_nc_zt=23&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=8qkOSaO8QfGJU8neuziDNQ&oh=00_AfQ9suFndykU1EfhPzoJNSIsfnTmNlTfDu2A74vUytbJ0w&oe=6882E106'),
+('manager2@shop.com', 'manager', N'Quản Lý Shop', 'Manager', 0, N'https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/493029640_122138480816605942_308789900247444872_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGC9RYTsm5qbwQVU5HRsDHPM_QKOCtQXawz9Ao4K1BdrDBDqAJA6je55gu7pbUGCXj_wE9JF9tpdZiC1orJU7GJ&_nc_ohc=KwZpEJ-qKTYQ7kNvwFPw5q-&_nc_oc=AdnvnTCTXvnh55nzQV0DJCR3p5H--cpy-R3rdC0Wo9y37iSDjh7l4qCQ9XLm95UerHdRGNDsfjoQm6EBYGhOgK7z&_nc_zt=23&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=x8jt7VhoGeA6VzwCTnfXAQ&oh=00_AfSS6C3wlNCLJ8qUCDJG1IQzSRsozxz_suGmFAvJMWGTDA&oe=6882F00B'),
+('user2@example.com', 'user', N'Lê Thị C', 'User', 0, N'https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/246656344_10165689418720557_4225476852778908330_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHadZsqt2jhNCbOnvQO0Txp2OvgiaL_1mrY6-CJov_WauoZSuWIYz9RG0kv5ijCCkuGGdlnnoFibG1hnshsLrrJ&_nc_ohc=uHQfeYFz0aQQ7kNvwF3Cyqw&_nc_oc=Adk0yvCWw9Y78vhRmfVqSLPfnzYTqdvkidJ5srliDuY8DmXmkp47Bgn1OQfAoI2Br-1BISb2DUwxgoiIFYFC8AN-&_nc_zt=23&_nc_ht=scontent.fsgn2-3.fna&_nc_gid=4hkrVQ-K9UG50uM4MyskpQ&oh=00_AfSJWfqRB3s-alxT38KDJPtKyNitJVVm9hT1cziH6FaQ-Q&oe=6882F3DD');
 
 
 INSERT INTO Brand (Name) VALUES 
