@@ -19,6 +19,8 @@ public partial class User
 
     public bool? IsGoogleLogin { get; set; }
 
+    public string AvartaUrl { get; set; }
+
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

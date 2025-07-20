@@ -17,12 +17,12 @@ namespace WebApi.Controllers
             _userService = userService;
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    var user = await _userService.GetByIdAsync(id);
-        //    return user == null ? NotFound() : Ok(user);
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            return user == null ? NotFound() : Ok(user);
+        }
 
         //[HttpGet("email/{email}")]
         //public async Task<IActionResult> GetByEmail(string email)
